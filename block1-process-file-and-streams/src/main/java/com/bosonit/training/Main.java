@@ -58,22 +58,26 @@ public class Main {
             //Lee linea de texto
             String line = reader.readLine();
             while (line != null) {
-                String[] data = line.split(":");
-                if (data.length < 2 || data[0].isBlank()) {
-                    throw new InvalidLineFormatException("Invalid line format in: " + line);
+                //Creo el bloque try-catch dentro del while para poder manejar la excepcion sin que el código deje de ejecutarse
+                try {
+                    String[] data = line.split(":");
+                    if (data.length < 2 || data[0].isBlank()) {
+                        throw new InvalidLineFormatException("Invalid line format in: " + line);
+                    }
+                    String name = data[0];
+                    if (name.isEmpty()) {
+                        throw new InvalidLineFormatException("Name can't be blank");
+                    }
+                    String town = data[1].isBlank() ? "unknown" : data[1];
+                    int age = data.length > 2 ? Integer.parseInt(data[2]) : 0;
+                    people.add(new Person(name, town, age));
+                } catch (InvalidLineFormatException e) {
+                    System.out.println(e.getMessage());
                 }
-                String name = data[0];
-                //Si el nombre esta vacio lanza error ya que es obligatorio
-                if (name.isEmpty()) {
-                    throw new InvalidLineFormatException("Name can't be blank");
-                }
-                String town = data[1].isBlank() ? "unknown" : data[1];
-                int age = data.length > 2 ? Integer.parseInt(data[2]) : 0;
-                //Person person = new Person(name, town, age);
-                people.add(new Person(name,town,age));
                 line = reader.readLine();
             }
         } catch (IOException e){
+
             //captura donde se produce la excepción y en que línea del código
             e.printStackTrace();
         }
