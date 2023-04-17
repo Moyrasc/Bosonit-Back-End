@@ -51,7 +51,6 @@ public class Main {
     //Leer fichero csv
     public static List<Person> readCSV() throws IOException,InvalidLineFormatException{
         List<Person> people = new ArrayList<>();
-        //Path path = Paths.get("src/main/resources/people.csv");
         Path path = Paths.get("block1-process-file-and-streams/src/main/resources/people.csv");
         //Lee el archivo
         try (BufferedReader reader = Files.newBufferedReader(path)) {
@@ -62,12 +61,9 @@ public class Main {
                 try {
                     String[] data = line.split(":");
                     if (data.length < 2 || data[0].isBlank()) {
-                        throw new InvalidLineFormatException("Invalid line format in: " + line);
+                        throw new InvalidLineFormatException("Invalid line format or name can't be blank in: " + line);
                     }
                     String name = data[0];
-                    if (name.isEmpty()) {
-                        throw new InvalidLineFormatException("Name can't be blank");
-                    }
                     String town = data[1].isBlank() ? "unknown" : data[1];
                     int age = data.length > 2 ? Integer.parseInt(data[2]) : 0;
                     people.add(new Person(name, town, age));
@@ -88,7 +84,8 @@ public class Main {
     public static List<Person> filterPeople(List<Person> people, Predicate<Person> predicate){
         return people.stream()
                 .filter(predicate)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()); //Operador final para transformar el flujo modificado a lista
+
     }
 
 
