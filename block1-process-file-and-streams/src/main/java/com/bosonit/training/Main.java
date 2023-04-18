@@ -47,7 +47,6 @@ public class Main {
         }
 
     }
-
     //Leer fichero csv
     public static List<Person> readCSV() throws IOException,InvalidLineFormatException{
         List<Person> people = new ArrayList<>();
@@ -87,6 +86,5 @@ public class Main {
                 .collect(Collectors.toList()); //Operador final para transformar el flujo modificado a lista
 
     }
-
 
 }
