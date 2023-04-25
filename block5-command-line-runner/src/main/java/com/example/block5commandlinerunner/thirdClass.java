@@ -4,9 +4,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class secondaryClass implements CommandLineRunner {
+public class thirdClass implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("Hi from secondary class");
+        System.out.println("Hi, I'm the third class");
     }
 }
