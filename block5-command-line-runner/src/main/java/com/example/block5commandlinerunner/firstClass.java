@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class firstClass {
     //@PostConstruct se ejecuta una vez antes de la inicialización del bean.
     @PostConstruct
-    public void firstClass() {
+    public void hello() {
         System.out.println("Hi from first class");
     }
 }
