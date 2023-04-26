@@ -29,4 +29,4 @@ public class Block5CommandLineRunnerApplication implements CommandLineRunner {
 /* ¿En qué orden se muestran los mensajes? ¿Por qué?
 El primer mensaje que se muestra es el de firstClass(Hi from first class) ya que lleva la anotación @PostConstruct
 con lo que le indicamos que debe ejecutarse en el momento que el bean ha sido creado en cambio CommandLineRunner
-se ejecutará una vez la aplicación haya arrancado */
+se ejecutará una vez la aplicación haya arrancado por lo que se ejecutará secondaryClass y por último thirdClass*/
